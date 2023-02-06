@@ -165,7 +165,7 @@ jobs:
             METADATA_GITHUB_SHA=${{ needs.prepare.outputs.GITHUB_SHA }}
             METADATA_BUILD_NUMBER="$GITHUB_RUN_ID/$GITHUB_REF_NAME/$(date +'%d/%m/%Y %H:%M')"
             METADATA_VERSION=${{ needs.prepare.outputs.DOCKER_IMAGE_SEMVER }}
-          file: Dockerfile-ci
+          file: Dockerfile
           context: ${{ needs.prepare.outputs.WORKING_DIRECTORY }}
           labels: "org.opencontainers.image.revision=${{ needs.prepare.outputs.GITHUB_SHA }},org.opencontainers.image.created=$(date -u +'%Y-%m-%dT%H:%M:%SZ'),org.opencontainers.image.version=${{ needs.prepare.outputs.DOCKER_IMAGE_SEMVER }},com.github.repo.branch=$(echo ${GITHUB_REF##*/} | tr '[A-Z]' '[a-z]')"
           no-cache: false
